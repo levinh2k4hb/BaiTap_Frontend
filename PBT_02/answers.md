@@ -32,3 +32,71 @@ Tất cả các trường trên đều sẽ ngăn form submit bởi browser-nati
 Mình tạo file `validation_test.html` chứa 5 input trên trong một form. Khi nhấn Submit, một script sẽ ngăn submit mặc định, thu thập `checkValidity()` và `validationMessage` cho từng input, rồi hiển thị kết quả trên trang — điều này giúp chụp screenshot trạng thái validation dễ đọc và so sánh với dự đoán.
 
 Kết quả kiểm tra thực tế sẽ được thêm dưới đây sau khi chạy test và chụp ảnh.
+
+---
+
+### Câu A3 — Accessibility
+
+#### 1. Tại sao `<label for="email">` quan trọng cho người dùng screen reader?
+
+`<label for="email">` kết nối nhãn với input thông qua `for + id`, tạo ra **accessible name** (tên truy cập) rõ ràng:
+
+- **Với screen reader**: Khi người dùng focus vào ô input, trình đọc màn hình sẽ đọc nội dung của label (ví dụ: "Email"), giúp biết phải nhập gì vào ô đó.
+- **Nếu thiếu label**: Screen reader chỉ nói "edit text" — không có ngữ cảnh, user sẽ bị lẫn lộn.
+- **Lợi ích thêm**: Tăng vùng click (click vào label sẽ focus input), hỗ trợ autofill của password manager/browser, và tuân theo WCAG accessibility standards.
+
+**Ví dụ đúng cách**:
+```html
+<label for="email">Email:</label>
+<input type="email" id="email" name="email">
+```
+
+#### 2. Khi nào dùng `<fieldset>` + `<legend>`? Ví dụ cụ thể.
+
+`<fieldset>` + `<legend>` dùng để **nhóm các form control liên quan** thành một tập có ngữ cảnh chung, đặc biệt quan trọng cho radio buttons và checkboxes:
+
+- **Khi nào dùng**: Khi có nhóm lựa chọn có cùng chủ đề, ví dụ:
+  - Nhóm lựa chọn phương thức thanh toán
+  - Nhóm lựa chọn giới tính
+  - Nhóm chọn địa chỉ giao hàng
+  - Nhóm đồng ý/không đồng ý với các điều khoản khác nhau
+
+- **Lợi ích**: Screen reader sẽ đọc `<legend>` trước, cung cấp ngữ cảnh cho nhóm lựa chọn, giảm nhầm lẫn.
+
+**Ví dụ cụ thể cho e-commerce**:
+```html
+<fieldset>
+    <legend>Phương thức thanh toán</legend>
+    <label>
+        <input type="radio" name="payment" value="card">
+        Thẻ tín dụng
+    </label>
+    <label>
+        <input type="radio" name="payment" value="bank">
+        Chuyển khoản ngân hàng
+    </label>
+    <label>
+        <input type="radio" name="payment" value="cash">
+        Thanh toán khi nhận hàng
+    </label>
+</fieldset>
+```
+
+#### 3. `aria-label` dùng khi nào? Tại sao KHÔNG dùng khi đã có `<label>`?
+
+**Khi dùng `aria-label`**:
+- Khi control **không có nhãn hiển thị** (icon-only buttons, nút ×, nút menu icon).
+- Khi cần cung cấp tên truy cập ngắn/mô tả cho phần tử không thể có `<label>` trực tiếp.
+
+**Ví dụ hợp lệ**:
+```html
+<button type="submit" aria-label="Gửi đơn hàng">🛒</button>
+<button aria-label="Đóng">×</button>
+```
+
+**Tại sao KHÔNG dùng `aria-label` khi đã có `<label>`**:
+- `aria-label` **ghi đè** accessible name — nếu có cả `<label>` và `aria-label`, screen reader chỉ đọc `aria-label`, ẩn đi nhãn hiển thị.
+- Tạo **mâu thuẫn**: Người nhìn thấy label nhưng screen reader nghe khác, dẫn đến nhầm lẫn.
+- **Quy tắc thực tế**: Ưu tiên `<label>` (semantic, hiển thị, clickable) → sau đó mới dùng `aria-labelledby` (tham chiếu text sẵn có) → cuối cùng mới dùng `aria-label` (khi không có cách khác).
+
+**Kết luận**: `<label for>` là giải pháp tốt nhất cho form controls; `aria-label` chỉ cho trường hợp không thể có nhãn hiển thị.
