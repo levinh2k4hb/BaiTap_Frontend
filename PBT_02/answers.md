@@ -1,0 +1,10 @@
+1. type="email" → Ô nhập text có kiểm tra định dạng email, tự báo lỗi nếu thiếu @ hoặc sai cú pháp → Dùng cho ô email đăng ký, đăng nhập, nhận hóa đơn
+2. type="password" → Ô nhập text che ký tự bằng dấu chấm hoặc dấu sao → Dùng cho mật khẩu tài khoản, đổi mật khẩu, tạo tài khoản mới
+3. type="tel" → Ô nhập text cho số điện thoại, không tự ép định dạng quá chặt → Dùng cho số điện thoại liên hệ, xác nhận đơn hàng, giao hàng
+4. type="number" → Ô nhập số có nút tăng/giảm tùy trình duyệt → Dùng cho số lượng sản phẩm, số lượng vé, số người đặt hàng
+5. type="search" → Ô tìm kiếm giống text nhưng tối ưu cho tra cứu → Dùng cho thanh tìm kiếm sản phẩm, thương hiệu, mã đơn hàng
+6. type="url" → Ô nhập text kiểm tra có đúng định dạng đường dẫn web → Dùng cho link website cửa hàng, link mạng xã hội, link theo dõi đơn hàng
+7. type="date" → Ô chọn ngày bằng lịch của trình duyệt → Dùng cho ngày sinh khách hàng, ngày nhận hàng, ngày đặt lịch giao
+8. type="time" → Ô chọn giờ/phút theo giao diện của trình duyệt → Dùng cho chọn khung giờ giao hàng, giờ nhận hàng, lịch hẹn tư vấn
+9. type="range" → Thanh trượt kéo để chọn giá trị trong một khoảng → Dùng cho bộ lọc giá sản phẩm, mức đánh giá, khoảng giá khuyến mãi
+10. type="checkbox" → Ô chọn/bỏ chọn từng mục, có thể chọn nhiều → Dùng cho chọn phương thức thanh toán, đồng ý điều khoản, lọc thuộc tính sản phẩm
