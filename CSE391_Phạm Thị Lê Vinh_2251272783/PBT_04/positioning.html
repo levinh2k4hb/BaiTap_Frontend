@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positioning Playground</title>
+    <link rel="stylesheet" href="positioning.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">MyLogo</div>
+        <nav class="nav">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <h3>Danh mục</h3>
+            <ul>
+                <li>Điện thoại</li>
+                <li>Laptop</li>
+                <li>Phụ kiện</li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Sản phẩm nổi bật</h1>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge-hot">HOT</div>
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <h3>Sản phẩm 1</h3>
+                    <p>Mô tả ngắn gọn.</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Product">
+                    <h3>Sản phẩm 2</h3>
+                    <p>Mô tả ngắn gọn.</p>
+                </div>
+            </div>
+
+            <div class="dummy-scroll-area">
+                <p>↓ Tiếp tục cuộn xuống để xem hiệu ứng Sticky của Sidebar và Fixed của Header ↓</p>
+            </div>
+        </main>
+    </div>
+
+    <button class="scroll-to-top">↑</button>
+
+</body>
+
+</html>
