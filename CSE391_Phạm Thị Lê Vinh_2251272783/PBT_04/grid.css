@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+
+.layout-container {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) 200px;
+    gap: 20px;
+    grid-template-areas:
+        "header header header"
+        "hero hero hero"
+        "sidebar main ads"
+        "footer footer footer";
+
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    grid-area: header;
+}
+
+.hero {
+    grid-area: hero;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main-content {
+    grid-area: main;
+}
+
+.ads {
+    grid-area: ads;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.header,
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.hero {
+    background-color: #007bff;
+    border-radius: 8px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.hero-featured-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    grid-column: span 2;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-normal-card {
+    background-color: #e9ecef;
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+    margin-top: 15px;
+    line-height: 2;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    color: #555;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: #007bff;
+}
+
+.ads {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ads h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.ads-image {
+    width: 100%;
+    max-width: 160px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
