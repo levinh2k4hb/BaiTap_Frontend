@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">TechStore</div>
+        <div class="header-controls">
+            <button id="themeToggle"><i class="fas fa-moon"></i></button>
+            <div class="cart-container">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cartBadge" class="badge hidden">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="controls">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+
+            <div id="categoryButtons" class="category-filters">
+            </div>
+
+            <select id="sortSelect">
+                <option value="default">Sắp xếp mặc định</option>
+                <option value="priceAsc">Giá: Thấp đến Cao</option>
+                <option value="priceDesc">Giá: Cao đến Thấp</option>
+                <option value="nameAsc">Tên: A - Z</option>
+                <option value="ratingDesc">Đánh giá tốt nhất</option>
+            </select>
+        </section>
+
+        <section id="productGrid" class="product-grid">
+        </section>
+    </main>
+
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
