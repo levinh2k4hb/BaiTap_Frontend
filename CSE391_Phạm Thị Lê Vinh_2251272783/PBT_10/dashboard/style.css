@@ -1,0 +1,22 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.widget {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 200px;
+}
+
+.error {
+    color: red;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
