@@ -128,3 +128,23 @@ Desktop (từ lg trở lên): Giao diện mở rộng thành lưới 4 cột.
   Giải thích:
   - hidden: Ẩn phần tử (tương đương display: none;) áp dụng mặc định từ mobile.md:
   - flex: Ghi đè thành display: flex; khi màn hình đạt kích thước Tablet (md) trở lên.
+
+
+# CÂU C1
+**Tailwind vs CSS thuần**
+HTML file size: CSS thuần giúp file HTML rất nhẹ. Tailwind làm file HTML nặng và dài hơn (do chứa hàng tá utility classes), nhưng bù lại file CSS tổng xuất ra cuối cùng lại cực nhẹ.
+
+Maintainability: CSS thuần dễ đọc hơn do HTML gọn gàng. Tuy nhiên, Tailwind lại dễ sửa hơn vì khoanh vùng style trực tiếp trên từng thẻ, không sợ lỗi side-effect (sửa class chỗ này làm vỡ layout chỗ khác như CSS thuần).
+
+Reusability: CSS thuần tái sử dụng bằng cách gắn chung một tên class (VD: .btn). Tailwind tái sử dụng hiệu quả nhất qua các Component Framework (React, Vue) hoặc dùng directive @apply để gom nhóm các utility class vào 1 class CSS truyền thống.
+
+
+# CÂU C2
+**Performance**
+Tại sao file CSS nhỏ hơn Bootstrap? Bootstrap tải toàn bộ mã CSS của thư viện (kể cả những UI bạn không dùng tới). Tailwind chỉ sinh ra CSS cho những class mà bạn thực sự gõ trong file HTML.
+
+PurgeCSS (Tailwind JIT) loại bỏ gì? Nó quét toàn bộ file HTML/JS và loại bỏ 100% dead code (các class CSS không được sử dụng) trước khi xuất ra file CSS cuối cùng.
+
+Khi nào KHÔNG nên dùng Tailwind? (2 tình huống):
+ - Làm web thuần HTML nhiều trang (không dùng React/Vue/Blade): Việc copy-paste mã HTML chứa quá nhiều class đi khắp nơi sẽ gây khó khăn cực lớn khi cần bảo trì, đổi màu đồng loạt.
+ - Cần dựng nhanh MVP / Admin Dashboard có UI chuẩn mực: Sử dụng các thư viện có sẵn component như Bootstrap hay Ant Design sẽ tiết kiệm thời gian hơn nhiều so với việc tự "lắp ghép" từng nút bấm bằng Tailwind.
