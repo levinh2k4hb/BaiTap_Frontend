@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page TailwindCSS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <nav class="bg-white dark:bg-gray-800 shadow-sm fixed w-full z-10 top-0 transition-colors duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">TailwindStore</a>
+
+            <ul class="hidden md:flex space-x-8 items-center font-medium">
+                <li><a href="#" class="hover:text-blue-600 transition-colors">Trang chủ</a></li>
+                <li><a href="#" class="hover:text-blue-600 transition-colors">Sản phẩm</a></li>
+
+                <li>
+                    <button onclick="document.documentElement.classList.toggle('dark')"
+                        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 transition-colors">
+                        🌓
+                    </button>
+                </li>
+            </ul>
+
+            <button class="md:hidden p-2 text-gray-600 dark:text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="mt-16 bg-blue-50 dark:bg-gray-800 py-24 px-4 transition-colors duration-300">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white">
+                Bộ Sưu Tập Mùa Đông
+            </h1>
+            <p class="text-lg md:text-xl mb-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Khám phá những thiết kế thời trang hiện đại, mang đậm phong cách cinematic với chất liệu len cao cấp.
+            </p>
+            <a href="#products"
+                class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                Mua Sắm Ngay
+            </a>
+        </div>
+    </header>
+
+    <main id="products" class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">Sản Phẩm Nổi Bật</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Sản phẩm 1"
+                    class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="p-5 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Áo Khoác Nữ High-Contrast</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">1.200.000đ</p>
+                    <button
+                        class="w-full bg-gray-900 dark:bg-gray-700 text-white py-2 rounded hover:bg-gray-800 transition-colors">Thêm
+                        vào giỏ</button>
+                </div>
+            </div>
+
+            <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80" alt="Sản phẩm 2"
+                    class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="p-5 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Áo Da Nam Cinematic</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">2.500.000đ</p>
+                    <button
+                        class="w-full bg-gray-900 dark:bg-gray-700 text-white py-2 rounded hover:bg-gray-800 transition-colors">Thêm
+                        vào giỏ</button>
+                </div>
+            </div>
+
+            <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=500&q=80" alt="Sản phẩm 3"
+                    class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="p-5 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Áo Len Trắng Mùa Đông</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">850.000đ</p>
+                    <button
+                        class="w-full bg-gray-900 dark:bg-gray-700 text-white py-2 rounded hover:bg-gray-800 transition-colors">Thêm
+                        vào giỏ</button>
+                </div>
+            </div>
+
+            <div
+                class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?w=500&q=80" alt="Sản phẩm 4"
+                    class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="p-5 text-center">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">Phụ Kiện Thời Trang</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-bold text-xl mb-4">450.000đ</p>
+                    <button
+                        class="w-full bg-gray-900 dark:bg-gray-700 text-white py-2 rounded hover:bg-gray-800 transition-colors">Thêm
+                        vào giỏ</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12 transition-colors duration-300">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-white text-xl font-bold mb-4">TailwindStore</h4>
+                <p class="text-sm">Trải nghiệm mua sắm mượt mà với giao diện Responsive chuẩn Mobile-First.</p>
+            </div>
+            <div>
+                <h4 class="text-white text-lg font-bold mb-4">Hỗ trợ</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Tra cứu đơn hàng</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Chính sách đổi trả</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white text-lg font-bold mb-4">Đăng ký nhận tin</h4>
+                <form class="flex flex-col sm:flex-row gap-2">
+                    <input type="email" placeholder="Nhập email..."
+                        class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white w-full">
+                    <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
