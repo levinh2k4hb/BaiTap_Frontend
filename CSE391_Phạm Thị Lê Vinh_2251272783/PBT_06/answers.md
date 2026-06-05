@@ -31,3 +31,29 @@ ms-5: Lề trái (margin-start).
 .container: Cố định chiều rộng (nhảy size theo từng điểm ngắt), có khoảng trắng 2 bên.
 .container-fluid: Tràn viền, luôn rộng 100% ở mọi màn hình.
 .container-md: Dưới 768px thì tràn viền (100%), từ 768px trở lên thì cố định có khoảng trắng (như .container). 
+
+# CÂU C1
+1. Quy trình đổi màu $primary sang #E63946
+ - Công cụ cần thiết: Trình biên dịch SASS và mã nguồn SASS của Bootstrap.
+ - Cách làm (File cần modify): Bạn tạo một file SCSS của riêng mình (VD: style.scss). Khai báo biến $primary: #E63946; trước dòng lệnh @import "node_modules/bootstrap/scss/bootstrap";. Sau đó compile file này ra CSS để dùng.
+
+2. Tại sao KHÔNG override trực tiếp mà nên dùng SASS Variables?
+ - Tính đồng bộ toàn hệ thống: Khi đổi biến SASS, Bootstrap tự động tính toán và cập nhật màu cho tất cả các thành phần liên quan (nút bấm, viền, chữ, alert) và cả các trạng thái tương tác (:hover, :active, :focus). Nếu override .btn-primary, bạn chỉ đổi được cái nút đó, các trạng thái hover hay các component khác vẫn giữ màu cũ.
+ - Tối ưu hiệu suất và dung lượng: Ghi đè CSS bắt trình duyệt tải mã cũ rồi lại tải thêm mã mới để đè lên. Dùng SASS biến dịch sẽ tạo ra một bộ CSS chuẩn, gọn gàng và duy nhất ngay từ đầu.
+
+# CÂU C2
+**Số dòng CSS cần viết:**
+ - CSS thuần: Rất nhiều (thường >100 dòng cho layout flexbox, thẻ, và hàng tá media queries cho responsive).
+ - Bootstrap: Gần như 0 dòng CSS. Layout được dựng hoàn toàn bằng việc nối các class tiện ích có sẵn vào file HTML.
+
+**Thời gian phát triển:**
+ - CSS thuần: Lâu hơn, tốn thời gian căn chỉnh và test lỗi responsive trên từng thiết bị.
+ - Bootstrap: Cực kỳ nhanh. Giống như trò chơi xếp hình, thuộc tên class là dựng xong giao diện ngay lập tức.
+
+**Khả năng tùy biến:**
+ - CSS thuần: Tuyệt đối (100%). Bạn làm chủ từng pixel, dễ dàng phá cách.
+ - Bootstrap: Hạn chế và dễ bị "rập khuôn". Giao diện nhìn thường có nét giống nhau. Để tùy biến sâu đòi hỏi phải hiểu rõ cấu trúc SASS của Bootstrap.
+
+**Khi nào NÊN và KHÔNG NÊN dùng Bootstrap:**
+ - NÊN DÙNG: Các dự án cần tốc độ ra mắt nhanh (MVP, Prototype), các hệ thống quản trị nội bộ (Admin Dashboard), hoặc các website chú trọng tính năng hơn là thiết kế UI độc quyền.
+ - KHÔNG NÊN DÙNG: Các website yêu cầu tính nghệ thuật, sáng tạo hoặc nhận diện thương hiệu cao (Portfolio, Landing Page quảng bá campaign độc lạ), hoặc các dự án khắt khe về tối ưu hiệu suất (vì Bootstrap chứa rất nhiều class CSS thừa không dùng tới).
