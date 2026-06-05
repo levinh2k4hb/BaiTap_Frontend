@@ -121,3 +121,63 @@ In ra: 25990000 (Gốc không đổi. updated là một object hoàn toàn mới
 3. Spread gotcha
 console.log(product.specs.ram);
 In ra: 16
+
+
+# CÂU C1
+const processOrders = (orders) => orders
+    .filter(({ status, total }) => status === "completed" && total > 100000)
+    .map(({ id, customer, total }) => ({
+        id, customer, total,
+        discount: total * 0.1,
+        finalTotal: total * 0.9 // total - (total * 0.1)
+    }))
+    .sort((a, b) => b.finalTotal - a.finalTotal);
+
+
+1. filter() kết hợp Destructuring: Thay vì dùng 2 lệnh if lồng nhau, ta "bóc tách" luôn status và total ở tham số đầu vào và gộp điều kiện trên 1 dòng.
+
+2. map(): Dùng để cấu trúc lại object. Trích xuất thẳng { id, customer, total } để trả về một object mới, gọn gàng hơn kiểu gán từng dòng item.thuoc_tinh = ... như trước.
+
+3. sort(): Xóa sổ hoàn toàn thuật toán sắp xếp (2 vòng lặp for lồng nhau) dài dòng cũ. Hàm sort có sẵn chỉ cần b - a là tự hiểu sắp xếp giảm dần.
+
+4. Arrow Functions (=>) Chaining: Các hàm được nối đuôi nhau (chaining) liền mạch. Vì dùng arrow function một dòng, hệ thống sẽ tự động hiểu là return kết quả mà không cần gõ hẳn chữ return ra.
+
+
+# CÂU C2
+
+const miniArray = {
+    map(arr, fn) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            result.push(fn(arr[i], i, arr));
+        }
+        return result;
+    },
+
+    filter(arr, fn) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (fn(arr[i], i, arr)) {
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    },
+
+    reduce(arr, fn, initialValue) {
+        // Xử lý cả trường hợp người dùng không truyền initialValue
+        let hasInitial = initialValue !== undefined;
+        let accumulator = hasInitial ? initialValue : arr[0];
+        let startIndex = hasInitial ? 0 : 1;
+
+        for (let i = startIndex; i < arr.length; i++) {
+            accumulator = fn(accumulator, arr[i], i, arr);
+        }
+        return accumulator;
+    }
+};
+
+// TEST KẾT QUẢ
+console.log(miniArray.map([1, 2, 3], x => x * 2));        // → [2, 4, 6]
+console.log(miniArray.filter([1, 2, 3, 4], x => x > 2));    // → [3, 4]
+console.log(miniArray.reduce([1, 2, 3, 4], (a, b) => a + b, 0)); // → 10
