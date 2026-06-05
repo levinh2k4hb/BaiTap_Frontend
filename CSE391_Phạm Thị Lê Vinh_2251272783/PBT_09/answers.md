@@ -86,3 +86,53 @@ Output sẽ in ra theo thứ tự từ trong ra ngoài (do cơ chế mặc đị
 2. Nếu bỏ comment e.stopPropagation():
 Output sẽ chỉ in ra duy nhất 1 dòng:
 - BUTTON
+
+
+# CÂU C1
+
+Dưới đây là danh sách chi tiết 7 lỗi trong đoạn code của bạn và cách khắc phục triệt để.
+
+Danh sách 7 lỗi cần sửa:
+Sai tên sự kiện trong addEventListener: * Lỗi: addEventListener("onclick", ...) ở nút #decrementBtn.
+
+Sửa: Tên sự kiện phải là "click".
+
+Cố gắng gán đè một Hằng số (const) DOM:
+
+Lỗi: Ở nút Reset có lệnh countDisplay = count;. Biến countDisplay là một phần tử HTML khai báo bằng const, không thể gán bằng số nguyên được.
+
+Sửa: Phải là countDisplay.textContent = count;.
+
+Lỗi gọi hàm remove:
+
+Lỗi: Ở #clearHistory, vòng lặp ghi là item.remove;. Đây là hàm nên nếu thiếu dấu ngoặc đơn () thì lệnh sẽ không được thực thi.
+
+Sửa: item.remove();
+
+Xóa innerHTML sai cách:
+
+Lỗi: Nút Reset dùng historyList.innerHTML = null;. Trình duyệt sẽ ép kiểu null thành chuỗi và in ra chữ "null" trên màn hình.
+
+Sửa: Dùng chuỗi rỗng historyList.innerHTML = "";.
+
+Thiếu lấy dữ liệu (Load) History:
+
+Lỗi: Ở sự kiện beforeunload có lưu historyList.innerHTML, nhưng khi load lại quên không lấy ra.
+
+Sửa: Thêm dòng historyList.innerHTML = localStorage.getItem("history") || "";.
+
+Lỗi kiểu dữ liệu khi lấy từ LocalStorage:
+
+Lỗi: localStorage.getItem("count") trả về chuỗi String hoặc null. Nếu không ép về kiểu số (Number), khi click cộng/trừ sẽ sinh ra lỗi nối chuỗi (VD: "5" + 1 thành "51").
+
+Sửa: Dùng parseInt(localStorage.getItem("count")) || 0.
+
+Lỗi mất sự kiện (Event Listener) khi nạp từ LocalStorage:
+
+Lỗi: Đoạn code cũ gắn thẻ li.addEventListener("click", ...) lúc mới tạo. Tuy nhiên, nếu nạp lại trang, chuỗi HTML lấy từ LocalStorage đem ném vào innerHTML sẽ không hề có bất kỳ sự kiện nào đi kèm (Click vào li cũ sẽ không xóa được).
+
+Sửa: Phải dùng kỹ thuật Event Delegation, gắn một sự kiện lắng nghe duy nhất lên container #history thay vì gắn cho từng thẻ <li>.
+
+
+# CÂU C2
+
