@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Keyboard App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Gallery & Command Palette</h1>
+        <p>Bấm <kbd>Ctrl</kbd> + <kbd>K</kbd> để mở Command Palette</p>
+    </header>
+
+    <main>
+        <section class="gallery-container" aria-label="Thư viện hình ảnh">
+            <div class="gallery-controls">
+                <button id="btnPlayPause" aria-label="Phát hoặc tạm dừng slideshow (Phím Space)">
+                    ▶ Play Slideshow (Space)
+                </button>
+                <span id="slideshowStatus" aria-live="polite"></span>
+            </div>
+
+            <div class="grid" id="imageGrid">
+            </div>
+        </section>
+    </main>
+
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Trình xem ảnh chi tiết" hidden>
+        <div class="modal-content">
+            <button id="btnCloseModal" class="close-btn" aria-label="Đóng modal (Phím Escape)">❌</button>
+            <button id="btnPrev" class="nav-btn left" aria-label="Ảnh trước (Mũi tên trái)">&#10094;</button>
+
+            <img id="modalImage" src="" alt="Ảnh phóng to" tabindex="0">
+
+            <button id="btnNext" class="nav-btn right" aria-label="Ảnh tiếp theo (Mũi tên phải)">&#10095;</button>
+            <div id="imageIndicator" class="indicator" aria-live="polite">1 / 9</div>
+        </div>
+    </div>
+
+    <div id="commandPalette" class="palette-overlay" role="dialog" aria-modal="true" aria-label="Bảng lệnh" hidden>
+        <div class="palette-content">
+            <input type="text" id="paletteInput" placeholder="Tìm kiếm lệnh..." aria-label="Nhập từ khóa tìm kiếm lệnh">
+            <ul id="commandList" role="listbox" aria-label="Danh sách các lệnh khả dụng">
+            </ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
