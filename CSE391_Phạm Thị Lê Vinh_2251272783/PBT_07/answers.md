@@ -94,3 +94,18 @@ var html = `
     <span>Giá: ${price}đ</span>
 </div>
 ;
+
+
+# CÂU C1
+
+1. if (giaSauGiam = 0): Lỗi dùng dấu gán (=) thay vì so sánh. Sửa: Thay bằng === 0.
+
+2. Lỗi ẩn var trong vòng lặp: var không có block scope (phạm vi khối). Khi setTimeout chạy, vòng lặp đã xong, biến i đều trỏ về giá trị cuối cùng là 5. Sửa: Đổi var thành let để mỗi vòng lặp giữ một bản sao i riêng biệt.
+
+3. "100000": Truyền giá bán dạng chuỗi dễ gây lỗi phép tính. Sửa: Truyền số 100000.
+
+4. return sai kiểu: Báo lỗi trả về Chuỗi, tính toán thành công trả về Số (thiếu đồng nhất). Sửa: Dùng throw new Error(...) để báo lỗi.
+
+5. Thiếu validate giaBan: Code chưa chặn trường hợp giá bán là số âm. Sửa: Thêm điều kiện if (giaBan <= 0).
+
+6. Dùng var giamGia: Cú pháp cũ, dễ lỗi rò rỉ biến. Sửa: Đổi thành const.
