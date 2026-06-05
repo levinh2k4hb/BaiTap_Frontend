@@ -57,3 +57,74 @@ ms-5: Lề trái (margin-start).
 **Khi nào NÊN và KHÔNG NÊN dùng Bootstrap:**
  - NÊN DÙNG: Các dự án cần tốc độ ra mắt nhanh (MVP, Prototype), các hệ thống quản trị nội bộ (Admin Dashboard), hoặc các website chú trọng tính năng hơn là thiết kế UI độc quyền.
  - KHÔNG NÊN DÙNG: Các website yêu cầu tính nghệ thuật, sáng tạo hoặc nhận diện thương hiệu cao (Portfolio, Landing Page quảng bá campaign độc lạ), hoặc các dự án khắt khe về tối ưu hiệu suất (vì Bootstrap chứa rất nhiều class CSS thừa không dùng tới).
+
+ # PHẦN B, TAILWINDCSS
+
+ # CÂU A1
+ 1. Thẻ bao ngoài cùng (<div class="flex...">)
+flex → display: flex
+items-center → align-items: center (Căn giữa các phần tử theo trục dọc)
+justify-between → justify-content: space-between (Đẩy các phần tử ra xa nhau sát 2 mép)
+p-4 → padding: 1rem (16px)
+bg-white → background-color: white
+shadow-md → Tạo hiệu ứng bóng đổ (box-shadow) cỡ vừa
+rounded-lg → border-radius: 0.5rem (8px) (Bo góc lớn)
+hover:shadow-xl → Tăng kích thước bóng đổ (extra large shadow) khi di chuột qua
+transition-shadow → Bật hiệu ứng chuyển động mượt (transition) cho thuộc tính shadow
+duration-300 → transition-duration: 300ms (Thời gian chuyển động 0.3s)
+
+2. Thẻ Avatar (<img ...>)
+w-16 → width: 4rem (64px)
+h-16 → height: 4rem (64px)
+rounded-full → border-radius: 9999px (Bo tròn hoàn toàn thành hình tròn)
+object-cover → object-fit: cover (Giữ tỷ lệ ảnh, cắt bớt phần thừa để lấp đầy khung)
+
+3. Thẻ bọc nội dung chữ (<div class="ml-4 flex-1">)
+ml-4 → margin-left: 1rem (16px)
+flex-1 → flex: 1 1 0% (Tự động phình to để chiếm toàn bộ không gian còn trống)
+
+4. Thẻ Tên (<h3 ...>)
+text-lg → font-size: 1.125rem (18px)
+font-semibold → font-weight: 600 (In đậm vừa)
+text-gray-800 → color: #1f2937 (Màu chữ xám đậm)
+truncate → Ngăn xuống dòng và thêm dấu ... nếu chữ quá dài (white-space: nowrap; overflow: hidden; text-overflow: ellipsis;)
+
+5. Thẻ Chức danh (<p ...>)
+text-sm → font-size: 0.875rem (14px)
+text-gray-500 → color: #6b7280 (Màu chữ xám nhạt)
+
+6. Thẻ Nút bấm (<button ...>)
+px-4 → padding-left: 1rem; padding-right: 1rem; (Đệm ngang 16px)
+py-2 → padding-top: 0.5rem; padding-bottom: 0.5rem; (Đệm dọc 8px)
+bg-blue-500 → background-color: #3b82f6 (Nền xanh dương)
+text-white → color: white
+rounded-md → border-radius: 0.375rem (6px) (Bo góc vừa)
+hover:bg-blue-600 → Đổi nền sang xanh dương đậm hơn khi di chuột
+focus:ring-2 → Tạo viền ngoài (outline/box-shadow) 2px khi bấm/focus vào nút
+focus:ring-blue-300 → Đổi màu viền focus đó sang xanh dương nhạt    
+
+
+# CÂU A2
+1. Responsive Prefixes (md:, lg:, xl:)
+Tailwind sử dụng triết lý Mobile-First. Các class không có prefix sẽ áp dụng cho màn hình nhỏ nhất (mobile), các prefix sẽ ghi đè thuộc tính khi màn hình đạt đến một kích thước nhất định (breakpoint).
+ - md: (Medium): Từ Tablet trở lên (thường $\ge$ 768px).
+ - lg: (Large): Từ Desktop/Laptop trở lên (thường $\ge$ 1024px).
+ - xl: (Extra Large): Từ màn hình lớn trở lên (thường $\ge$ 1280px).
+**Ví dụ: md:grid-cols-2 lg:grid-cols-4 nghĩa là:**
+Mobile (mặc định): Không chia cột (trừ khi bạn khai báo trước đó).
+Tablet (từ md đến dưới lg): Giao diện chuyển thành lưới 2 cột.
+Desktop (từ lg trở lên): Giao diện mở rộng thành lưới 4 cột.
+
+2. State Modifiers (Trạng thái)
+Đây là các tiền tố dùng để kích hoạt class CSS khi người dùng tương tác với phần tử:
+ - hover:: Áp dụng khi người dùng di chuột (con trỏ) lên phần tử.
+ - focus:: Áp dụng khi phần tử đang được chọn (VD: click vào ô input để gõ phím, hoặc dùng phím Tab di chuyển tới nút bấm).
+ - active:: Áp dụng trong khoảnh khắc người dùng đang nhấn và giữ chuột trái vào phần tử (thường dùng làm hiệu ứng nút lún xuống).
+ - group-hover:: Áp dụng hiệu ứng cho phần tử con khi người dùng hover vào phần tử cha (Yêu cầu: phần tử cha phải được gắn class group).
+ 
+ 3. Chuyển đổi class từ Bootstrap sang Tailwind
+ Để "Ẩn trên mobile, hiện dạng flex trên tablet trở lên" (tương đương d-none d-md-flex của Bootstrap), bạn viết 2 class Tailwind sau:
+  **hidden md:flex**
+  Giải thích:
+  - hidden: Ẩn phần tử (tương đương display: none;) áp dụng mặc định từ mobile.md:
+  - flex: Ghi đè thành display: flex; khi màn hình đạt kích thước Tablet (md) trở lên.
