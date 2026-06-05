@@ -1,0 +1,45 @@
+// Import các partials (phải theo đúng thứ tự)
+@import 'variables';
+@import 'mixins';
+@import 'components';
+
+// Reset & Base
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-primary;
+    background-color: $bg-color;
+    color: $text-color;
+    line-height: 1.5;
+}
+
+// Layout Blocks
+.layout-wrapper {
+    padding: $spacing-md;
+    
+    @include respond-to(desktop) {
+        display: grid;
+        grid-template-columns: 250px 1fr 200px; // Sidebar - Main - Ads
+        gap: $spacing-lg;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr; // Mobile: 1 cột
+    gap: $spacing-md;
+
+    @include respond-to(tablet) {
+        grid-template-columns: repeat(2, 1fr); // Tablet: 2 cột
+    }
+
+    @include respond-to(desktop) {
+        grid-template-columns: repeat(4, 1fr); // Desktop: 4 cột
+    }
+}

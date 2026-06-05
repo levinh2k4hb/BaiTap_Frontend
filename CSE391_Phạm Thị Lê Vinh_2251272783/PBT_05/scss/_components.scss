@@ -1,0 +1,98 @@
+// Header Block
+.header {
+    background: $secondary-color;
+    color: $white;
+    padding: $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .nav-menu {
+        display: none; // Mặc định ẩn trên mobile
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: $white;
+            text-decoration: none;
+            padding: $spacing-md;
+            transition: color 0.3s;
+
+            // Dùng & để chỉ định trạng thái hover của thẻ a
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+
+    @include respond-to(tablet) {
+        .nav-menu {
+            display: block;
+            ul {
+                flex-direction: row;
+                gap: $spacing-md;
+            }
+        }
+    }
+}
+
+// Product Card Block
+.product-card {
+    background: $white;
+    padding: $spacing-md;
+    border-radius: $spacing-sm;
+    text-align: center;
+    @include card-shadow; // Gọi mixin
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: $spacing-sm $spacing-sm 0 0;
+    }
+
+    h3 {
+        margin: $spacing-sm 0;
+    }
+
+    .price {
+        color: $accent-color;
+        font-weight: bold;
+        margin-bottom: $spacing-md;
+    }
+
+    // Dùng & để chỉ định hover cho chính card
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    // Ví dụ thêm class phụ
+    &.featured {
+        border: 2px solid $primary-color;
+    }
+}
+
+// Button Block
+.btn-buy {
+    background: $primary-color;
+    color: $white;
+    border: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
